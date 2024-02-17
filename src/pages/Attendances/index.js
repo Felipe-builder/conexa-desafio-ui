@@ -3,13 +3,13 @@ import { FiPower, FiEdit, FiTrash2 } from 'react-icons/fi';
 import './styles.css';
 import logo from '../../assets/logo.png';
 
-const Attendance = () => {
+const Attendances = () => {
   return (
     <div className='attendance-container'>
       <header>
         <img src={logo} alt='Conexa'/>
         <span>Bem vindo, <strong>Felipe</strong>!</span>
-        <Link className='button' to='attendance/new'>Novo Atendimento</Link>
+        <Link className='button' to='new_attendance'>Novo Atendimento</Link>
         <button type='button'>
           <FiPower size={18} color='#cd405d'/>
         </button>
@@ -85,4 +85,4 @@ const Attendance = () => {
   )
 }
 
-export default Attendance;
+export default Attendances;

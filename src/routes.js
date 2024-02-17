@@ -1,14 +1,16 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Login from './pages/Login';
-import Attendance from './pages/Attendance';
+import Attendances from './pages/Attendances';
+import NewAttendance from "./pages/NewAttendance";
 
 const AppRoutes = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" Component={Login}/>
-        <Route path="/attendance" Component={Attendance}/>
+        <Route path="/attendances" Component={Attendances}/>
+        <Route path="/attendances/new_attendance" Component={NewAttendance}/>
       </Routes>
     </BrowserRouter>
   )
