@@ -1,0 +1,56 @@
+.login-container {
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.login-container section.form {
+  width: 100%;
+  max-width: 650px;
+  margin: auto;
+}
+
+.login-container section.form img {
+  width: 65%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.login-container section.form form {
+  margin-top: 100px;
+}
+
+.login-container section.form form h1{
+  font-size: 32px;
+  margin-bottom: 32px;
+}
+
+.login-main-image {
+  position: relative;
+  width: 100%;
+  height: 99vh;
+  max-width: 720px;
+}
+
+.login-main-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../../assets/rough-wall-texture.jpg');
+  filter: blur(5px);
+}
+
+.login-main-image img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
