@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { FiPower, FiEdit, FiTrash2 } from 'react-icons/fi';
+
 import './styles.css';
+
 import logo from '../../assets/logo.png';
 
 const Attendances = () => {
