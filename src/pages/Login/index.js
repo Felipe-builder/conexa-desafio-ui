@@ -26,7 +26,13 @@ const Login = () => {
       const response = await api.post('v1/login', data);
       localStorage.setItem('email', email);
       localStorage.setItem('accessToken', response.data.token);
-
+      const {data: userDoctor} = await api.get(`v1/doctor/email/${email}`, {
+        headers: {
+          Authorization: `Bearer ${response.data.token}`
+        }
+      })
+      console.log(userDoctor)
+      localStorage.setItem('userDoctor', JSON.stringify(userDoctor))
       navigate('/attendances')
     } catch (error) {
       alert('Login failed! Tray Agains!')
