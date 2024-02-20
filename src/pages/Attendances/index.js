@@ -10,6 +10,7 @@ import api from '../../services/api';
 const Attendances = () => {
 
   const [attendances, setAttendances] = useState([]);
+  const [page, setPage] = useState(0);
 
   const accessToken = localStorage.getItem('accessToken');
   const userDoctor = JSON.parse(localStorage.getItem('userDoctor'));
@@ -54,20 +55,31 @@ const Attendances = () => {
     }
   } 
 
+  const fetchMoreAttendances = async () => {
+    try {
+      const response = await api.get('v1/attendance', {
+        headers: {
+          Authorization: `Bearer ${accessToken}`
+        },
+        params: {
+          page: page,
+          size: 9,
+          direction: 'asc'
+        }
+      })
+
+      setAttendances([...attendances, ...response.data._embedded.attendanceDTOList]);
+      setPage(page+1);
+    } catch (error) {
+      alert('Delete failed! Try again.');
+    }
+  } 
+
+
   useEffect(() => {
-    api.get('v1/attendance', {
-      headers: {
-        Authorization: `Bearer ${accessToken}`
-      },
-      params: {
-        page: 0,
-        size: 9,
-        direction: 'asc'
-      }
-    }).then(response => {
-      setAttendances(response.data._embedded.attendanceDTOList);
-    });
-  }, [accessToken]);
+    fetchMoreAttendances();
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div className='attendance-container'>
@@ -101,6 +113,8 @@ const Attendances = () => {
 
         ))}
       </ul>
+
+      <button className='button' onClick={fetchMoreAttendances} type='button'>Mostrar mais</button>
     </div>
   )
 }
