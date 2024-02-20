@@ -18,11 +18,11 @@ const Attendances = () => {
   const logout = async (id) => {
     localStorage.clear()
     try {
-      await api.post(`v1/logout`, {}, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`
-        },
-      });
+      // await api.post(`v1/logout`, {}, {
+      //   headers: {
+      //     Authorization: `Bearer ${accessToken}`
+      //   },
+      // });
 
       setAttendances(attendances.filter(attendance => attendance.id !== id ));
       navigate('/login');
@@ -31,6 +31,15 @@ const Attendances = () => {
       alert('Delete failed! Try again.');
     }
   } 
+
+  const editAttendance = async (id) => {
+    try {
+      navigate(`/attendances/${id}`);
+    } catch (error) {
+      alert('Edit failed! Try again.');
+    }
+  } 
+
   const deleteAttendance = async (id) => {
     try {
       await api.delete(`v1/attendance/${id}`, {
@@ -82,7 +91,7 @@ const Attendances = () => {
           <strong>Plano de Saúde</strong>
           <p>{attendance.health_insurance || 'Sem plano de saúde'}</p>
 
-          <button type='button' >
+          <button onClick={() => editAttendance(attendance.id)} type='button' >
             <FiEdit size={20} color='#619342'/>
           </button>
           <button onClick={() => deleteAttendance(attendance.id)} type='button' >

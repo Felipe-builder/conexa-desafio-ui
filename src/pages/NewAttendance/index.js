@@ -29,7 +29,7 @@ const NewAttendance = () => {
         full_name: fullName,
         cpf,
         health_insurance: healthInsurance
-      } 
+      }
     }
 
     try {
@@ -63,14 +63,16 @@ const NewAttendance = () => {
           </Link>
         </section>
         <form onSubmit={createNewAttendance}>
-          <p>Informações do Paciente:</p>
+          <p className='subtitles-form'>Informações do Paciente:</p>
           <input
             placeholder='Nome Completo'
+            required
             value={fullName}
             onChange={e => setFullName(e.target.value)}
           />
           <input
             placeholder='CPF'
+            required
             value={cpf}
             onChange={e => setCpf(e.target.value)}
           />
@@ -79,7 +81,7 @@ const NewAttendance = () => {
             value={healthInsurance}
             onChange={e => setHealthInsurance(e.target.value)}
           />
-          <p>Informações da Consulta:</p>
+          <p className='subtitles-form'>Informações da Consulta:</p>
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <DateTimePicker
               label="Data e hora da consulta"

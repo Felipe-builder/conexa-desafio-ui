@@ -35,7 +35,6 @@
 
 .new-attendance-container section.form img {
   width: 65%;
-  margin-left: auto;
   margin-right: auto;
   display: block;
 }
@@ -63,4 +62,9 @@
 .new-attendance-container .content form input + p {
   margin-top: 24px;
   margin-bottom: 12px;
+}
+
+.new-attendance-container .subtitles-form {
+  font-size: 18px;
+  margin-bottom: 18px;
 }
